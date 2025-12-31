@@ -24,41 +24,52 @@
             text-align: center;
         }
 
+        /* --- NOUVELLE BARRE DE TITRE --- */
         header {
-            background: linear-gradient(180deg, #1a1a1a 0%, var(--dark) 100%);
-            padding: 40px 10px;
-            border-bottom: 1px solid rgba(255, 204, 0, 0.3);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+            padding: 30px 15px;
+            background: var(--dark);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-bar {
+            display: inline-block;
+            padding: 10px 40px;
+            border: 2px solid var(--gold);
+            border-radius: 50px;
+            background: rgba(255, 204, 0, 0.05);
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.2);
+            backdrop-filter: blur(5px);
         }
 
         h1 { 
             font-family: 'Cinzel', serif; 
             color: var(--gold); 
             margin: 0; 
-            font-size: 1.8em; 
-            letter-spacing: 4px;
-            text-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+            font-size: 1.5em; 
+            letter-spacing: 5px;
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
         }
+        /* ------------------------------- */
 
-        .tabs { display: flex; justify-content: center; gap: 10px; padding: 20px 0; background: #0a0a0a; }
+        .tabs { display: flex; justify-content: center; gap: 10px; padding: 15px 0; background: #0a0a0a; border-bottom: 1px solid #222; }
         .tab-btn { 
             background: #222; 
             border: 1px solid #333; 
             color: #888; 
-            padding: 10px 20px; 
+            padding: 8px 18px; 
             border-radius: 30px; 
-            font-size: 0.8em; 
+            font-size: 0.75em; 
             cursor: pointer; 
             transition: 0.3s;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
         .tab-btn.active { 
             background: var(--gold-gradient); 
             color: black; 
-            border-color: var(--gold);
             font-weight: bold;
-            box-shadow: 0 0 10px rgba(255, 204, 0, 0.4);
+            box-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
         }
 
         .container { padding: 20px; max-width: 450px; margin: 0 auto; }
@@ -74,79 +85,33 @@
             border-top: 2px solid var(--gold);
         }
 
-        .match-time {
-            font-size: 0.75em;
-            color: #888;
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-
-        .match-teams { 
-            font-family: 'Cinzel', serif;
-            color: var(--gold); 
-            font-size: 1.2em; 
-            margin-bottom: 10px; 
-            display: block; 
-        }
-
-        .confiance {
-            display: inline-block;
-            font-size: 0.8em;
-            color: var(--win);
-            margin-bottom: 15px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
+        .match-time { font-size: 0.75em; color: #888; display: block; margin-bottom: 5px; font-weight: 600; }
+        .match-teams { font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.2em; margin-bottom: 10px; display: block; }
+        .confiance { display: inline-block; font-size: 0.8em; color: var(--win); margin-bottom: 15px; font-weight: bold; }
 
         .score-grid { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 15px; 
-            background: rgba(0,0,0,0.4); 
-            padding: 20px; 
-            border-radius: 15px;
-            border: 1px solid #222;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 15px; 
+            background: rgba(0,0,0,0.4); padding: 20px; border-radius: 15px; border: 1px solid #222;
         }
-
         .score-item { text-align: center; }
         .label { font-size: 0.65em; color: #777; display: block; margin-bottom: 8px; text-transform: uppercase; }
         .val { font-size: 1.5em; font-weight: 600; color: #fff; }
 
         .win-badge { 
-            position: absolute; 
-            top: -10px; 
-            right: 20px; 
-            background: var(--win); 
-            color: #000; 
-            font-size: 10px; 
-            font-weight: 900; 
-            padding: 5px 15px; 
-            border-radius: 50px; 
-            box-shadow: 0 0 10px var(--win);
+            position: absolute; top: -10px; right: 20px; background: var(--win); 
+            color: #000; font-size: 10px; font-weight: 900; padding: 5px 15px; border-radius: 50px; 
         }
 
         .email-fixed {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background: var(--gold-gradient);
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            font-size: 24px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            z-index: 1000;
-            transition: 0.3s;
+            position: fixed; bottom: 25px; right: 25px; background: var(--gold-gradient);
+            width: 55px; height: 55px; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; text-decoration: none; font-size: 24px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 1000;
         }
 
         #admin-panel { display: none; background: #111; padding: 25px; border: 1px solid var(--gold); margin: 20px; border-radius: 20px; }
         input, select { width: 90%; padding: 12px; margin: 10px 0; background: #000; border: 1px solid #333; color: white; border-radius: 10px; }
-        .btn-add { background: var(--gold-gradient); color: black; border: none; padding: 15px; width: 100%; font-weight: bold; border-radius: 10px; cursor: pointer; }
+        .btn-add { background: var(--gold-gradient); color: black; border: none; padding: 15px; width: 100%; font-weight: bold; border-radius: 10px; }
         
         .footer { color: #222; font-size: 9px; margin: 60px 0; cursor: pointer; }
     </style>
@@ -154,12 +119,14 @@
 <body>
 
     <header>
-        <h1>𝐵𝐴𝑁𝑇𝐼𝐴    𝐄𝐋𝐈𝐓𝐄</h1>
+        <div class="logo-bar">
+            <h1>𝐁𝐀𝐍𝐓𝐈𝐀 ¥ 𝑬𝑳𝑰𝑻𝑬</h1>
+        </div>
     </header>
 
     <div class="tabs">
-        <button class="tab-btn active" id="btn-live" onclick="switchTab('live')">Dernières Analyses</button>
-        <button class="tab-btn" id="btn-history" onclick="switchTab('history')">Archives Victoires</button>
+        <button class="tab-btn active" id="btn-live" onclick="switchTab('live')">Analyses</button>
+        <button class="tab-btn" id="btn-history" onclick="switchTab('history')">Archives</button>
     </div>
 
     <div class="container" id="liste-matchs"></div>
@@ -169,18 +136,18 @@
     <div id="admin-panel" class="container">
         <h3 style="color: var(--gold);">SYSTÈME ADMIN</h3>
         <input type="text" id="eq" placeholder="Nom du Match">
-        <input type="text" id="time" placeholder="Heure du Match (ex: 20:45)">
+        <input type="text" id="time" placeholder="Heure (ex: 20:45)">
         <input type="text" id="ht" placeholder="Score HT">
         <input type="text" id="ft" placeholder="Score FT">
-        <input type="text" id="conf" placeholder="Confiance % (ex: 95%)">
+        <input type="text" id="conf" placeholder="Confiance %">
         <select id="status">
             <option value="en_cours">Match en cours</option>
             <option value="gagne">Gagné ✅</option>
         </select>
-        <button class="btn-add" onclick="envoyerMatch()">PUBLIER SUR L'APP</button>
+        <button class="btn-add" onclick="envoyerMatch()">PUBLIER</button>
     </div>
 
-    <p class="footer" onclick="ouvrirAdmin()">© 2026 Bantia Elite Secure</p>
+    <p class="footer" onclick="ouvrirAdmin()">© 2025 Bantia Elite Secure</p>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -248,9 +215,8 @@
                 status: document.getElementById('status').value,
                 timestamp: new Date()
             });
-            alert("Match publié !");
+            alert("Publié !");
             document.getElementById('eq').value = "";
-            document.getElementById('time').value = "";
         };
 
         window.supprimer = async (id) => { if(confirm("Supprimer ?")) await deleteDoc(doc(db, "matchs", id)); };
