@@ -120,7 +120,7 @@
 
     <header>
         <div class="logo-bar">
-            <h1>𝐁𝐀𝐍𝐓𝐈𝐀 ¥ 𝑬𝑳𝑰𝑻𝑬</h1>
+            <h1>𝐁𝐀𝐍𝐓𝐈𝐀☆𝑬𝑳𝑰𝑻𝑬</h1>
         </div>
     </header>
 
