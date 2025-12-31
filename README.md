@@ -154,7 +154,7 @@
 <body>
 
     <header>
-        <h1>𝐵𝐴𝑁𝑇𝐼𝐴 𝐄𝐋𝐈𝐓𝐄</h1>
+        <h1>𝐵𝐴𝑁𝑇𝐼𝐴    𝐄𝐋𝐈𝐓𝐄</h1>
     </header>
 
     <div class="tabs">
