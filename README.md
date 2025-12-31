@@ -1,188 +1,260 @@
-
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BANTIA CORRECT SCORE</title>
+    <title>BANTIA ELITE PREDICTIONS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Bantia Score">
-    <meta name="theme-color" content="#0a0a0a">
-
     <style>
         :root { 
             --gold: #ffcc00; 
-            --gold-dark: #b8860b;
-            --dark: #0a0a0a; 
-            --card: #161616;
+            --gold-gradient: linear-gradient(145deg, #ffcc00, #b8860b);
+            --dark: #0f0f0f; 
+            --card: #1a1a1a; 
+            --win: #00ff88; 
         }
+
         body { 
             background: var(--dark); 
-            color: #eee; 
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            color: #ffffff; 
+            font-family: 'Poppins', sans-serif; 
             margin: 0; 
             padding: 0; 
-            text-align: center; 
+            text-align: center;
         }
+
         header {
             background: linear-gradient(180deg, #1a1a1a 0%, var(--dark) 100%);
-            padding: 30px 10px;
-            border-bottom: 2px solid var(--gold);
+            padding: 40px 10px;
+            border-bottom: 1px solid rgba(255, 204, 0, 0.3);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.8);
         }
-        h1 { 
-            margin: 0; 
-            font-size: 2.2em; 
-            letter-spacing: 2px; 
-            color: var(--gold);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-        .annonce { 
-            background: rgba(255, 204, 0, 0.1);
-            color: var(--gold); 
-            border: 1px solid var(--gold-dark); 
-            padding: 12px; 
-            margin: 20px auto;
-            width: 85%;
-            border-radius: 4px; 
-            font-weight: bold;
-            font-size: 0.9em;
-        }
-        .match-card { 
-            background: var(--card);
-            border: 1px solid #222;
-            border-left: 4px solid var(--gold);
-            padding: 20px; 
-            margin: 15px auto; 
-            width: 90%;
-            max-width: 500px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-        }
-        .match-card h2 { color: var(--gold); margin: 0 0 15px 0; font-size: 1.1em; border-bottom: 1px solid #333; padding-bottom: 10px; }
-        .score-row { display: flex; justify-content: space-around; margin-top: 10px; }
-        .score-box { background: #222; padding: 10px; border-radius: 5px; min-width: 90px; }
-        .score-label { font-size: 0.7em; color: #888; display: block; margin-bottom: 5px; }
-        .score-val { font-weight: bold; font-size: 1.2em; color: white; }
-        .confiance { color: var(--gold); font-size: 0.8em; display: block; margin-top: 5px; }
 
-        /* Panneau Admin */
-        #admin-panel { display: none; background: #111; padding: 20px; border-radius: 10px; margin: 20px auto; border: 2px solid var(--gold); max-width: 400px; }
-        input { background: #222; border: 1px solid #444; color: white; padding: 12px; margin: 8px 0; width: 90%; border-radius: 5px; font-size: 16px; }
-        .btn-publier { background: var(--gold); color: black; font-weight: bold; border: none; padding: 15px; width: 95%; border-radius: 5px; cursor: pointer; margin-top: 10px; }
-        .btn-delete { background: #8b0000; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; margin-top: 15px; font-size: 11px; }
-        .footer-secret { color: #1a1a1a; font-size: 10px; margin: 60px 0 30px 0; cursor: pointer; }
+        h1 { 
+            font-family: 'Cinzel', serif; 
+            color: var(--gold); 
+            margin: 0; 
+            font-size: 1.8em; 
+            letter-spacing: 4px;
+            text-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+        }
+
+        .tabs { display: flex; justify-content: center; gap: 10px; padding: 20px 0; background: #0a0a0a; }
+        .tab-btn { 
+            background: #222; 
+            border: 1px solid #333; 
+            color: #888; 
+            padding: 10px 20px; 
+            border-radius: 30px; 
+            font-size: 0.8em; 
+            cursor: pointer; 
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .tab-btn.active { 
+            background: var(--gold-gradient); 
+            color: black; 
+            border-color: var(--gold);
+            font-weight: bold;
+            box-shadow: 0 0 10px rgba(255, 204, 0, 0.4);
+        }
+
+        .container { padding: 20px; max-width: 450px; margin: 0 auto; }
+
+        .match-card { 
+            background: var(--card); 
+            border-radius: 20px; 
+            padding: 25px; 
+            margin-bottom: 25px; 
+            border: 1px solid #333; 
+            position: relative; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            border-top: 2px solid var(--gold);
+        }
+
+        .match-time {
+            font-size: 0.75em;
+            color: #888;
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .match-teams { 
+            font-family: 'Cinzel', serif;
+            color: var(--gold); 
+            font-size: 1.2em; 
+            margin-bottom: 10px; 
+            display: block; 
+        }
+
+        .confiance {
+            display: inline-block;
+            font-size: 0.8em;
+            color: var(--win);
+            margin-bottom: 15px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .score-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 15px; 
+            background: rgba(0,0,0,0.4); 
+            padding: 20px; 
+            border-radius: 15px;
+            border: 1px solid #222;
+        }
+
+        .score-item { text-align: center; }
+        .label { font-size: 0.65em; color: #777; display: block; margin-bottom: 8px; text-transform: uppercase; }
+        .val { font-size: 1.5em; font-weight: 600; color: #fff; }
+
+        .win-badge { 
+            position: absolute; 
+            top: -10px; 
+            right: 20px; 
+            background: var(--win); 
+            color: #000; 
+            font-size: 10px; 
+            font-weight: 900; 
+            padding: 5px 15px; 
+            border-radius: 50px; 
+            box-shadow: 0 0 10px var(--win);
+        }
+
+        .email-fixed {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: var(--gold-gradient);
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 24px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            z-index: 1000;
+            transition: 0.3s;
+        }
+
+        #admin-panel { display: none; background: #111; padding: 25px; border: 1px solid var(--gold); margin: 20px; border-radius: 20px; }
+        input, select { width: 90%; padding: 12px; margin: 10px 0; background: #000; border: 1px solid #333; color: white; border-radius: 10px; }
+        .btn-add { background: var(--gold-gradient); color: black; border: none; padding: 15px; width: 100%; font-weight: bold; border-radius: 10px; cursor: pointer; }
+        
+        .footer { color: #222; font-size: 9px; margin: 60px 0; cursor: pointer; }
     </style>
 </head>
 <body>
+
     <header>
-        <h1>𝕮𝑶𝑹𝑹𝑬𝑪𝑻 𝕾𝑪𝑶𝑹𝑬</h1>
+        <h1>𝐵𝐴𝑁𝑇𝐼𝐴 𝐄𝐋𝐈𝐓𝐄</h1>
     </header>
 
-    <div id="annonce-serveur" class="annonce">MATCH D'AUJOURD'HUI </div>
-    
-    <div id="liste-matchs">
-        </div>
-
-    <h2 style="color: #222; margin-top: 40px;">[𝐁𝐎𝐍𝐍𝐄 𝐂𝐇𝐀𝐍𝐂𝐄]</h2>
-
-    <div id="admin-panel">
-        <h3 style="color: var(--gold);">ADMINISTRATION BANTIA</h3>
-        <input type="text" id="add-eq" placeholder="Équipes (ex: PSG vs Real)">
-        <input type="text" id="add-ht" placeholder="Score Mi-temps (HT)">
-        <input type="number" id="add-cht" placeholder="% Confiance HT">
-        <input type="text" id="add-ft" placeholder="Score Final (FT)">
-        <input type="number" id="add-cft" placeholder="% Confiance FT">
-        <button class="btn-publier" onclick="envoyerMatch()">PUBLIER LE MATCH</button>
+    <div class="tabs">
+        <button class="tab-btn active" id="btn-live" onclick="switchTab('live')">Dernières Analyses</button>
+        <button class="tab-btn" id="btn-history" onclick="switchTab('history')">Archives Victoires</button>
     </div>
 
-    <p class="footer-secret" onclick="ouvrirAdmin()">© 2025 Correct Score Analysis - Bantia</p>
+    <div class="container" id="liste-matchs"></div>
+
+    <a href="mailto:bantiaelite@gmail.com" class="email-fixed">✉️</a>
+
+    <div id="admin-panel" class="container">
+        <h3 style="color: var(--gold);">SYSTÈME ADMIN</h3>
+        <input type="text" id="eq" placeholder="Nom du Match">
+        <input type="text" id="time" placeholder="Heure du Match (ex: 20:45)">
+        <input type="text" id="ht" placeholder="Score HT">
+        <input type="text" id="ft" placeholder="Score FT">
+        <input type="text" id="conf" placeholder="Confiance % (ex: 95%)">
+        <select id="status">
+            <option value="en_cours">Match en cours</option>
+            <option value="gagne">Gagné ✅</option>
+        </select>
+        <button class="btn-add" onclick="envoyerMatch()">PUBLIER SUR L'APP</button>
+    </div>
+
+    <p class="footer" onclick="ouvrirAdmin()">© 2026 Bantia Elite Secure</p>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getFirestore, doc, onSnapshot, collection, addDoc, deleteDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, deleteDoc, doc, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-        // Ta configuration Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyCrDehL-WzJP0jrw-i6iOTIXMNl9nrXOMI",
             authDomain: "bantiaapp.firebaseapp.com",
             projectId: "bantiaapp",
             storageBucket: "bantiaapp.firebasestorage.app",
-            messagingSenderId: "1017776145922",
             appId: "1:1017776145922:web:baa915ce6bf6196fc9c91b"
         };
 
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
+        let currentTab = 'live';
 
-        // Récupérer l'annonce (News)
-        onSnapshot(doc(db, "config", "news"), (s) => {
-            if(s.exists()) document.getElementById("annonce-serveur").innerText = "📢 " + s.data().message;
-        });
-
-        // Afficher les matchs en temps réel
-        onSnapshot(query(collection(db, "matchs"), orderBy("timestamp", "desc")), (s) => {
-            const div = document.getElementById("liste-matchs");
-            div.innerHTML = "";
-            s.forEach((match) => {
-                const m = match.data();
-                div.innerHTML += `
-                    <div class="match-card">
-                        <h2>${m.equipes}</h2>
-                        <div class="score-row">
-                            <div class="score-box">
-                                <span class="score-label">HALF TIME (HT)</span>
-                                <span class="score-val">${m.ht}</span>
-                                <span class="confiance">${m.cht}% Confiance</span>
-                            </div>
-                            <div class="score-box" style="border-left: 1px solid #333; padding-left: 10px;">
-                                <span class="score-label">FULL TIME (FT)</span>
-                                <span class="score-val">${m.ft}</span>
-                                <span class="confiance">${m.cft}% Confiance</span>
-                            </div>
-                        </div>
-                        <button class="btn-delete" style="display:none" class="admin-only" onclick="supprimer('${match.id}')">SUPPRIMER</button>
-                    </div>`;
-            });
-        });
-
-        // Fonction pour ouvrir l'admin
-        window.ouvrirAdmin = () => {
-            const mdp = prompt("Entrez le mot de passe Bantia :");
-            if(mdp === "654091") {
-                document.getElementById('admin-panel').style.display = 'block';
-                document.querySelectorAll('.btn-delete').forEach(btn => btn.style.display = 'inline-block');
-                alert("Accès autorisé. Bienvenue !");
-            } else { alert("Code incorrect"); }
+        window.switchTab = (tab) => {
+            currentTab = tab;
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('btn-' + tab).classList.add('active');
+            chargerDonnees();
         };
 
-        // Fonction pour publier un match
-        window.envoyerMatch = async () => {
-            const eq = document.getElementById('add-eq').value;
-            if(!eq) return alert("Veuillez entrer le nom des équipes.");
-            try {
-                await addDoc(collection(db, "matchs"), {
-                    equipes: eq,
-                    ht: document.getElementById('add-ht').value || "À venir",
-                    cht: document.getElementById('add-cht').value || "0",
-                    ft: document.getElementById('add-ft').value || "À venir",
-                    cft: document.getElementById('add-cft').value || "0",
-                    timestamp: new Date()
+        function chargerDonnees() {
+            onSnapshot(query(collection(db, "matchs"), orderBy("timestamp", "desc")), (s) => {
+                const div = document.getElementById("liste-matchs");
+                div.innerHTML = "";
+                s.forEach((match) => {
+                    const m = match.data();
+                    if(currentTab === 'live' && m.status === 'gagne') return;
+                    if(currentTab === 'history' && m.status !== 'gagne') return;
+                    
+                    div.innerHTML += `
+                        <div class="match-card">
+                            ${m.status === 'gagne' ? '<span class="win-badge">WINNER</span>' : ''}
+                            <span class="match-time">🕒 ${m.heure || '--:--'}</span>
+                            <span class="match-teams">${m.equipes}</span>
+                            <div class="confiance">CONFIANCE: ${m.confiance || "90%"}</div>
+                            <div class="score-grid">
+                                <div class="score-item"><span class="label">HALF TIME</span><span class="val">${m.ht}</span></div>
+                                <div class="score-item" style="border-left: 1px solid #333"><span class="label">FULL TIME</span><span class="val">${m.ft}</span></div>
+                            </div>
+                            <button class="btn-del" style="display:none; color:#ff4444; border:none; background:none; margin-top:20px; font-size:10px;" onclick="supprimer('${match.id}')">[EFFACER]</button>
+                        </div>`;
                 });
-                alert("Match ajouté avec succès !");
-                document.getElementById('add-eq').value = "";
-            } catch(e) { 
-                console.error(e);
-                alert("Erreur serveur : Vérifiez vos règles Firestore."); 
+            });
+        }
+
+        window.ouvrirAdmin = () => {
+            const t = prompt("Code Maître :");
+            if(btoa(t) === "NjU0MDkx") {
+                document.getElementById('admin-panel').style.display = 'block';
+                document.querySelectorAll('.btn-del').forEach(b => b.style.display = 'inline-block');
             }
         };
 
-        // Fonction pour supprimer
-        window.supprimer = async (id) => {
-            if(confirm("Supprimer définitivement ce match ?")) {
-                await deleteDoc(doc(db, "matchs", id));
-            }
+        window.envoyerMatch = async () => {
+            await addDoc(collection(db, "matchs"), {
+                equipes: document.getElementById('eq').value,
+                heure: document.getElementById('time').value,
+                ht: document.getElementById('ht').value,
+                ft: document.getElementById('ft').value,
+                confiance: document.getElementById('conf').value,
+                status: document.getElementById('status').value,
+                timestamp: new Date()
+            });
+            alert("Match publié !");
+            document.getElementById('eq').value = "";
+            document.getElementById('time').value = "";
         };
+
+        window.supprimer = async (id) => { if(confirm("Supprimer ?")) await deleteDoc(doc(db, "matchs", id)); };
+        chargerDonnees();
     </script>
 </body>
 </html>
